@@ -7,9 +7,13 @@ import java.util.Date;
 public class Movimentacao {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  Integer id;
+  private Integer id;
   @Column(name = "data_hora")
-  Date dataHora;
-  String descricao;
-  Double valor;
+  private Date dataHora;
+  @Column
+  private String descricao;
+  @Column
+  private Double valor;
+  @Enumerated(EnumType.STRING)
+  private MovimentacaoTipo tipo;
 }
