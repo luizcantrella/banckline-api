@@ -8,7 +8,8 @@ public class Conta {
   @Column(name = "conta_numero")
   Long numero;
   @Column(name = "conta_saldo")
-  Double saldo;
+  Double saldo ;
+
   public Long getNumero() {
     return numero;
   }
@@ -22,6 +23,7 @@ public class Conta {
   }
 
   public void setSaldo(Double saldo) {
-    this.saldo = saldo;
+    if(this.saldo == null) this.saldo = 0.0;
+    this.saldo += saldo;
   }
 }
