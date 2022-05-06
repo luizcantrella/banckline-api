@@ -9,6 +9,7 @@ import com.dio.santander.bankline.api.repository.MovimentacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Service
@@ -20,8 +21,9 @@ public class MovimentacaoService {
 
   public void save(NovaMovimentacao novaMovimentacao) {
     Movimentacao movimentacao = new Movimentacao();
-    Double valor = novaMovimentacao.getTipo() == MovimentacaoTipo.RECEITA ? 1.0 : -1.0;
-    valor *= novaMovimentacao.getValor();
+    BigDecimal valor = novaMovimentacao.getTipo() ==
+        MovimentacaoTipo.RECEITA ? BigDecimal.valueOf(1) : BigDecimal.valueOf(-1);
+    valor = valor.multiply(novaMovimentacao.getValor());
     movimentacao.setDataHora(LocalDateTime.now());
     movimentacao.setDescricao(novaMovimentacao.getDescricao());
     movimentacao.setIdConta(novaMovimentacao.getIdConta());

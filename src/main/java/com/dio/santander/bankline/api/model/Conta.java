@@ -2,13 +2,14 @@ package com.dio.santander.bankline.api.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.math.BigDecimal;
 
 @Embeddable
 public class Conta {
   @Column(name = "conta_numero")
   Long numero;
   @Column(name = "conta_saldo")
-  Double saldo ;
+  BigDecimal saldo;
 
   public Long getNumero() {
     return numero;
@@ -18,12 +19,14 @@ public class Conta {
     this.numero = numero;
   }
 
-  public Double getSaldo() {
+  public BigDecimal getSaldo() {
     return saldo;
   }
 
-  public void setSaldo(Double saldo) {
-    if(this.saldo == null) this.saldo = 0.0;
-    this.saldo += saldo;
+  public void setSaldo(BigDecimal saldo) {
+    if(this.saldo == null) {
+      this.saldo = BigDecimal.valueOf(0);
+    }
+    this.saldo =  this.saldo.add(saldo);
   }
 }

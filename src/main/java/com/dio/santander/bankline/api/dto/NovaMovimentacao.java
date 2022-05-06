@@ -2,9 +2,11 @@ package com.dio.santander.bankline.api.dto;
 
 import com.dio.santander.bankline.api.model.MovimentacaoTipo;
 
+import java.math.BigDecimal;
+
 public class NovaMovimentacao {
   private String descricao;
-  private Double valor;
+  private BigDecimal valor;
   private MovimentacaoTipo tipo;
   private Integer idConta;
 
@@ -16,11 +18,11 @@ public class NovaMovimentacao {
     this.descricao = descricao;
   }
 
-  public Double getValor() {
+  public BigDecimal getValor() {
     return valor;
   }
 
-  public void setValor(Double valor) {
+  public void setValor(BigDecimal valor) {
     this.valor = valor;
   }
 

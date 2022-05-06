@@ -1,6 +1,7 @@
 package com.dio.santander.bankline.api.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,10 +14,10 @@ public class Movimentacao {
   @Column
   private String descricao;
   @Column
-  private Double valor;
+  private BigDecimal valor;
   @Enumerated(EnumType.STRING)
   private MovimentacaoTipo tipo;
-  @Column(name = "id_conta")
+  @Column(name = "conta_id")
   private Integer idConta;
 
   public Integer getId() {
@@ -43,11 +44,11 @@ public class Movimentacao {
     this.descricao = descricao;
   }
 
-  public Double getValor() {
+  public BigDecimal getValor() {
     return valor;
   }
 
-  public void setValor(Double valor) {
+  public void setValor(BigDecimal valor) {
     this.valor = valor;
   }
 
